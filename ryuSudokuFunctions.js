@@ -9,9 +9,12 @@ function createGrid(grid) {
   //Create an array from row string
   for (let nums of rows) {
     output.push(
-      nums.split('').map(function(character) {
-        return Number(character);
-      })
+      nums
+        .substring(0, 9)
+        .split('')
+        .map(function(character) {
+          return Number(character);
+        })
     );
   }
   return output;
@@ -116,6 +119,7 @@ function iterateNums(grid, missingNums) {
   // Iterate through missing numbers
   for (let i = 0; i < missingNums.length; ) {
     // Extract current value of the grid coordinate
+    // console.log(i);
     row = missingNums[i][0];
     col = missingNums[i][1];
     // Iterate currer grid value to test new solution
@@ -152,6 +156,8 @@ function iterateNums(grid, missingNums) {
 }
 
 function complete(grid) {
+  console.log(grid);
+  console.log(grid.split('').length);
   grid = this.createGrid(grid);
   let missingNums = this.identifyMissing(grid);
 
